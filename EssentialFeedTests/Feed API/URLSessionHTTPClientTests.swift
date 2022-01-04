@@ -44,7 +44,7 @@ class URLSessionHTTPClientTests: XCTestCase {
 
         XCTAssertNotNil(receivedError as NSError?)
     }
-
+ 
     func test_getFromURL_failsOnAllInvalidRepresentationCases() {
         XCTAssertNotNil(resultErrorFor(data: nil, response: nil, error: nil))
         XCTAssertNotNil(resultErrorFor(data: nil, response: nonHTTPURLResponse(), error: nil))
@@ -182,7 +182,7 @@ class URLSessionHTTPClientTests: XCTestCase {
             return request
         }
 
-        override func startLoading() 
+        override func startLoading()
             if let requestObserver = URLProtocolStub.requestObserver {
                 client?.urlProtocolDidFinishLoading(self)
                 return requestObserver(request)
