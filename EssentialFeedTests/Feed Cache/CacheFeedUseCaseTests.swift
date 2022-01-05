@@ -40,18 +40,22 @@ class CacheFeedUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let items = [uniqueItem(), uniqueItem()]
 
-        sut.save(items)
+        sut.save(items )
 
         XCTAssertEqual(store.deleteCachedFeedCallCount, 1)
     }
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: LocalFeedLoader, store: FeedStore) {
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStore) {
         // The FeedStore is a helper class representing the framework side to help us define the abstract interface the Use Case needs for
         // its collaborater, making sure not to leak framework details into the Use Case
         let store = FeedStore()
         let sut = LocalFeedLoader(store: store)
+
+        trackForMemoryLeaks(store, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+
         return (sut: sut, store: store)
     }
 
