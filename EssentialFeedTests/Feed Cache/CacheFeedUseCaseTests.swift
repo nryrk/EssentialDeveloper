@@ -31,17 +31,13 @@ class FeedStore {
 class CacheFeedUseCaseTests: XCTestCase {
 
     func test_init_doesNotDeleteCacheUponCreation() {
-        // The FeedStore is a helper class representing the framework side to help us define the abstract interface the Use Case needs for
-        // its collaborater, making sure not to leak framework details into the Use Case
-        let store = FeedStore()
-        _ = LocalFeedLoader(store: store)
+        let (_, store) = makeSUT()
 
         XCTAssertEqual(store.deleteCachedFeedCallCount, 0)
     }
 
     func test_save_requestsCacheDeletion() {
-        let store = FeedStore()
-        let sut = LocalFeedLoader(store: store)
+        let (sut, store) = makeSUT()
         let items = [uniqueItem(), uniqueItem()]
 
         sut.save(items)
@@ -50,6 +46,14 @@ class CacheFeedUseCaseTests: XCTestCase {
     }
 
     // MARK: - Helpers
+
+    private func makeSUT() -> (sut: LocalFeedLoader, store: FeedStore) {
+        // The FeedStore is a helper class representing the framework side to help us define the abstract interface the Use Case needs for
+        // its collaborater, making sure not to leak framework details into the Use Case
+        let store = FeedStore()
+        let sut = LocalFeedLoader(store: store)
+        return (sut: sut, store: store)
+    }
 
     private func uniqueItem() -> FeedItem {
         return FeedItem(id: UUID(), description: "any", location: "anys", imageURL: anyURL())
