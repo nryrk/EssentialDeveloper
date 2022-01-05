@@ -31,7 +31,6 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
         }*/
     }
 
-
     // MARK: - Helper
 
     private func getFeedResult(file: StaticString = #filePath, line: UInt = #line) -> LoadFeedResult? {
