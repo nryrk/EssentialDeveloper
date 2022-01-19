@@ -78,11 +78,7 @@ class URLSessionHTTPClientTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func anyURL() -> URL { URL(string: "http://any-url.com")! }
-
     private func anyData() -> Data { Data(bytes: "Any Data".utf8) }
-
-    private func anyNSError() -> NSError { NSError(domain: "Any Error", code: 0) }
 
     private func anyHTTPURLResponse() -> HTTPURLResponse {
         HTTPURLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
