@@ -93,13 +93,7 @@ class CodableFeedStoreTests: XCTestCase {
         let feed = uniqueImageFeed().local
         let timestamp = Date()
 
-        let exp = expectation(description: "Wait for cache retrieval")
-        sut.insert(feed, timestamp: timestamp) { insertionError in
-            XCTAssertNil(insertionError, "Expected Feed to be inserted successfully")
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
-
+        insert((feed, timestamp), to: sut)
         expect(sut, toRetrieve: .found(feed: feed, timeStamp: timestamp))
     }
 
@@ -108,13 +102,7 @@ class CodableFeedStoreTests: XCTestCase {
         let feed = uniqueImageFeed().local
         let timestamp = Date()
 
-        let exp = expectation(description: "Wait for cache insertion")
-        sut.insert(feed, timestamp: timestamp) { insertionError in
-            XCTAssertNil(insertionError, "Expected Feed to be inserted successfully")
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
-
+        insert((feed, timestamp), to: sut)
         expect(sut, toRetrieveTwice: .found(feed: feed, timeStamp: timestamp))
     }
 
@@ -153,6 +141,15 @@ class CodableFeedStoreTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
 
+    private func insert(_ cache: (feed: [LocalFeedImage], timestamp: Date), to sut: CodableFeedStore) {
+        let exp = expectation(description: "Wait for cache retrieval")
+        sut.insert(cache.feed, timestamp: cache.timestamp) { insertionError in
+            XCTAssertNil(insertionError, "Expected Feed to be inserted successfully")
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+
     private func testSpecificStoreURL() -> URL {
         return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
     }
@@ -168,7 +165,6 @@ class CodableFeedStoreTests: XCTestCase {
     private func deleteStoreArtifacts() {
         try? FileManager.default.removeItem(at: testSpecificStoreURL())
     }
-
 
 }
 
