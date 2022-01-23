@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F115CE2279DB06D008559DD /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F115CE1279DB06D008559DD /* CodableFeedStore.swift */; };
 		5F12DEFD2797ABA30067D5AE /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12DEFC2797ABA30067D5AE /* ValidateFeedCacheUseCaseTests.swift */; };
 		5F12DEFF2797B1D80067D5AE /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12DEFE2797B1D80067D5AE /* FeedCacheTestHelpers.swift */; };
 		5F12DF012797B2980067D5AE /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12DF002797B2980067D5AE /* SharedTestHelpers.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F115CE1279DB06D008559DD /* CodableFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStore.swift; sourceTree = "<group>"; };
 		5F12DEFC2797ABA30067D5AE /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		5F12DEFE2797B1D80067D5AE /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheTestHelpers.swift; sourceTree = "<group>"; };
 		5F12DF002797B2980067D5AE /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				5F49D4D92786A1A100281BA4 /* LocalFeedLoader.swift */,
 				5F15FE6C278EA8390004B099 /* LocalFeedImage.swift */,
 				5F12DF022797C7380067D5AE /* FeedCachePolicy.swift */,
+				5F115CE1279DB06D008559DD /* CodableFeedStore.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				5F15FE6D278EA8390004B099 /* LocalFeedImage.swift in Sources */,
 				5F8180EB277CC06B0011C4B7 /* URLSessionHTTPClient.swift in Sources */,
 				5F49D4DC2786A22A00281BA4 /* FeedStore.swift in Sources */,
+				5F115CE2279DB06D008559DD /* CodableFeedStore.swift in Sources */,
 				5F4DD5EB2760C7AB00CF7FD0 /* FeedLoader.swift in Sources */,
 				5F4DD5F02761142100CF7FD0 /* RemoteFeedLoader.swift in Sources */,
 				5FC29F372762AE9D006E0630 /* FeedItemMapper.swift in Sources */,
