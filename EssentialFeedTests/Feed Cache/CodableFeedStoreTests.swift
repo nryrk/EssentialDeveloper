@@ -160,19 +160,6 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
         wait(for: [exp], timeout: 1.0)
     }
 
-    @discardableResult
-    private func insert(_ cache: (feed: [LocalFeedImage], timestamp: Date), to sut: FeedStore) -> Error? {
-        let exp = expectation(description: "Wait for cache retrieval")
-        var insertionError: Error?
-        sut.insert(cache.feed, timestamp: cache.timestamp) { receivedInsertionError in
-            insertionError = receivedInsertionError
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
-
-        return insertionError
-    }
-
     private func testSpecificStoreURL() -> URL {
         return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
     }
