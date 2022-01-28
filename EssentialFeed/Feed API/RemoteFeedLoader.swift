@@ -21,7 +21,7 @@ public final class RemoteFeedLoader: FeedLoader {
 
     public init(url: URL, client: HTTPClient) {
         self.url = url
-        self.client = client
+        self.client = client 
     }
 
     public func load(completion: @escaping (Result) -> Void) {
@@ -29,7 +29,7 @@ public final class RemoteFeedLoader: FeedLoader {
             guard self != nil else { return }
 
             switch result {
-            case .success(let data, let response):
+            case let .success((data, response)):
                 completion(RemoteFeedLoader.map(data, from: response))
             case .failure:
                 completion(.failure(Error.connectivity))
