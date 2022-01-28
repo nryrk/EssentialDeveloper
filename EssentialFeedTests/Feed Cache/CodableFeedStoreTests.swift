@@ -147,7 +147,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
             case (.empty, .empty),
                 (.failure, .failure):
                 break
-            case let (.found(expected), .found(feed: retrieved)):
+            case let (.found(feed: expected), .found(feed: retrieved)):
                 XCTAssertEqual(retrieved.feed, expected.feed, file: file, line: line)
                 XCTAssertEqual(retrieved.timeStamp, expected.timeStamp, file: file, line: line)
             default:
