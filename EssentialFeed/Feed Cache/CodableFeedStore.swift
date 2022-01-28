@@ -28,31 +28,26 @@ public class CodableFeedStore: FeedStore {
     public func retrieve(completion: @escaping RetrievalCompletion) {
         let storeURL = self.storeURL
         queue.async {
-            guard let data = try? Data(contentsOf: storeURL) else { return completion(.empty) }
+            guard let data = try? Data(contentsOf: storeURL) else { return completion(.success(.none)) }
 
-            do {
+            completion(Result {
                 let decoder = JSONDecoder()
                 let cache = try decoder.decode(Cache.self, from: data)
-                completion(.found(feed: cache.localFeed, timeStamp: cache.timestamp))
-            } catch {
-                completion(.failure(error))
-            }
+                return .some(CachedFeed(feed: cache.localFeed, timestamp: cache.timestamp))
+            })
         }
     }
 
     public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
         let storeURL = self.storeURL
         queue.async(flags: .barrier) {
-            do {
+
+            completion(Result {
                 let encoder = JSONEncoder()
                 let cache = Cache(feed: feed.map({ CodableFeedImage($0) }), timestamp: timestamp)
                 let encoded = try encoder.encode(cache)
                 try encoded.write(to: storeURL)
-                completion(nil)
-            } catch {
-                completion(error)
-            }
-
+            })
         }
     }
 
@@ -60,16 +55,12 @@ public class CodableFeedStore: FeedStore {
         let storeURL = self.storeURL
         queue.async(flags: .barrier) {
             guard FileManager.default.fileExists(atPath: storeURL.path) else {
-                return completion(nil)
+                return completion(.success(()))
             }
 
-            do {
+            completion(Result {
                 try FileManager.default.removeItem(at: storeURL)
-                completion(nil)
-            } catch {
-                completion(error)
-            }
-
+            })
         }
     }
 
