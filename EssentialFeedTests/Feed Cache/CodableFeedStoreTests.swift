@@ -26,13 +26,13 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
     func test_retrieve_deliversEmptyOnEmptyCach() {
         let sut = makeSUT()
 
-        expect(sut, toRetrieve: .success(.empty))
+        expect(sut, toRetrieve: .success(.none))
     }
 
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
         let sut = makeSUT()
 
-        expect(sut, toRetrieveTwice: .success(.empty))
+        expect(sut, toRetrieveTwice: .success(.none))
     }
 
     func test_retrieve_deliversFoundValuesOnNonEmptyCache () {
@@ -41,7 +41,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
         let timestamp = Date() 
 
         insert((feed, timestamp), to: sut)
-        expect(sut, toRetrieve: .success(.found(feed: feed, timeStamp: timestamp)))
+        expect(sut, toRetrieve: .success(CachedFeed(feed: feed, timestamp: timestamp)))
     }
 
     func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {
@@ -50,7 +50,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
         let timestamp = Date()
 
         insert((feed, timestamp), to: sut)
-        expect(sut, toRetrieveTwice: .success(.found(feed: feed, timeStamp: timestamp)))
+        expect(sut, toRetrieveTwice: .success(CachedFeed(feed: feed, timestamp: timestamp)))
     }
 
     func test_retrieve_deliversFailureOnRetrieval() {
@@ -82,7 +82,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
         let latestInsertionError = insert((latestFeed, latestTimestamp), to: sut)
 
         XCTAssertNil(latestInsertionError, "Expected to override cache successfully")
-        expect(sut, toRetrieve: .success(.found(feed: latestFeed, timeStamp: latestTimestamp)))
+        expect(sut, toRetrieve: .success(CachedFeed(feed: latestFeed, timestamp: latestTimestamp)))
     }
 
     func test_insert_deliversErrorOnInsertionError() {
@@ -142,18 +142,19 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
     private func expect(_ sut: FeedStore, toRetrieve expectedResult: FeedStore.RetrievalResult, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for cache retrieval")
 
-        sut.retrieve(){ retrievedResult in
+        sut.retrieve { retrievedResult in
             switch (expectedResult, retrievedResult) {
-            case (.success(.empty), .success(.empty)),
-                (.failure, .failure):
+            case (.success(.none), .success(.none)),
+                 (.failure, .failure):
                 break
-            case let (.success(.found(feed: expected)), .success(.found(feed: retrieved))):
-                XCTAssertEqual(retrieved.feed, expected.feed, file: file, line: line)
-                XCTAssertEqual(retrieved.timeStamp, expected.timeStamp, file: file, line: line)
-            default:
-                 XCTFail("Expected to retrieve \(expectedResult), got \(retrievedResult) instead", file: file, line: line)
-            }
 
+            case let (.success(.some(expected)), .success(.some(retrieved))):
+                XCTAssertEqual(retrieved.feed, expected.feed, file: file, line: line)
+                XCTAssertEqual(retrieved.timestamp, expected.timestamp, file: file, line: line)
+
+            default:
+                XCTFail("Expected to retrieve \(expectedResult), got \(retrievedResult) instead", file: file, line: line)
+            }
             exp.fulfill()
         }
 
