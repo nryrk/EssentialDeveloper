@@ -42,12 +42,12 @@ public class CodableFeedStore: FeedStore {
         let storeURL = self.storeURL
         queue.async(flags: .barrier) {
 
-            completion(Result(catching: {
+            completion(Result {
                 let encoder = JSONEncoder()
                 let cache = Cache(feed: feed.map({ CodableFeedImage($0) }), timestamp: timestamp)
                 let encoded = try encoder.encode(cache)
                 try encoded.write(to: storeURL)
-            }))
+            })
         }
     }
 
@@ -58,9 +58,9 @@ public class CodableFeedStore: FeedStore {
                 return completion(.success(()))
             }
 
-            completion(Result(catching: {
+            completion(Result {
                 try FileManager.default.removeItem(at: storeURL)
-            }))
+            })
         }
     }
 
