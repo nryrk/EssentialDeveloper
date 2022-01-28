@@ -30,29 +30,24 @@ public class CodableFeedStore: FeedStore {
         queue.async {
             guard let data = try? Data(contentsOf: storeURL) else { return completion(.success(.none)) }
 
-            do {
+            completion(Result {
                 let decoder = JSONDecoder()
                 let cache = try decoder.decode(Cache.self, from: data)
-                completion(.success(.some(CachedFeed(feed: cache.localFeed, timestamp: cache.timestamp))))
-            } catch {
-                completion(.failure(error))
-            }
+                return .some(CachedFeed(feed: cache.localFeed, timestamp: cache.timestamp))
+            })
         }
     }
 
     public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
         let storeURL = self.storeURL
         queue.async(flags: .barrier) {
-            do {
+
+            completion(Result(catching: {
                 let encoder = JSONEncoder()
                 let cache = Cache(feed: feed.map({ CodableFeedImage($0) }), timestamp: timestamp)
                 let encoded = try encoder.encode(cache)
                 try encoded.write(to: storeURL)
-                completion(.success(()))
-            } catch {
-                completion(.failure(error))
-            }
-
+            }))
         }
     }
 
@@ -63,13 +58,9 @@ public class CodableFeedStore: FeedStore {
                 return completion(.success(()))
             }
 
-            do {
+            completion(Result(catching: {
                 try FileManager.default.removeItem(at: storeURL)
-                completion(.success(()))
-            } catch {
-                completion(.failure(error))
-            }
-
+            }))
         }
     }
 
