@@ -87,7 +87,6 @@ private extension FeedViewController {
     }
 }
 
-
 private extension UIRefreshControl {
     func simulatePullToRefresh() {
         allTargets.forEach({ target in
