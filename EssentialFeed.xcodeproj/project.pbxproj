@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5F64458227A6CBEC00E4410C /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F779F3A27A6C4C4000C9A2C /* XCTestCase+MemoryLeakTracking.swift */; };
 		5F64458427A6D58C00E4410C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64458327A6D58C00E4410C /* FeedViewController.swift */; };
+		5F64458627A7873300E4410C /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64458527A7873300E4410C /* FeedImageCell.swift */; };
 		5F779F2C27A6C4B1000C9A2C /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F779F1E27A6C4B1000C9A2C /* FeedLoader.swift */; };
 		5F779F2D27A6C4B1000C9A2C /* FeeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F779F1F27A6C4B1000C9A2C /* FeeItem.swift */; };
 		5F779F2E27A6C4B1000C9A2C /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F779F2127A6C4B1000C9A2C /* CodableFeedStore.swift */; };
@@ -84,6 +85,7 @@
 
 /* Begin PBXFileReference section */
 		5F64458327A6D58C00E4410C /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		5F64458527A7873300E4410C /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
 		5F779F1E27A6C4B1000C9A2C /* FeedLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		5F779F1F27A6C4B1000C9A2C /* FeeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeeItem.swift; sourceTree = "<group>"; };
 		5F779F2127A6C4B1000C9A2C /* CodableFeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableFeedStore.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				5F64458327A6D58C00E4410C /* FeedViewController.swift */,
+				5F64458527A7873300E4410C /* FeedImageCell.swift */,
 			);
 			path = EssentialFeediOS;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F64458427A6D58C00E4410C /* FeedViewController.swift in Sources */,
+				5F64458627A7873300E4410C /* FeedImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
