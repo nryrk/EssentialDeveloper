@@ -44,10 +44,7 @@ final public class FeedViewController: UITableViewController, UITableViewDataSou
     }
 
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-         indexPaths.forEach { indexPath in
-
-             cellController(forRowAt: indexPath).preload()
-         }
+         indexPaths.forEach { cellController(forRowAt: $0).preload() }
      }
 
     private func cellController(forRowAt indexPath: IndexPath) -> FeedImageCellController {
