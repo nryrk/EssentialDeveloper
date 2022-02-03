@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F2680D027ABD0B400AC9E63 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2680CF27ABD0B400AC9E63 /* FeedViewModel.swift */; };
 		5F64458227A6CBEC00E4410C /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F779F3A27A6C4C4000C9A2C /* XCTestCase+MemoryLeakTracking.swift */; };
 		5F64458427A6D58C00E4410C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64458327A6D58C00E4410C /* FeedViewController.swift */; };
 		5F64458627A7873300E4410C /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64458527A7873300E4410C /* FeedImageCell.swift */; };
@@ -89,6 +90,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5F2680CF27ABD0B400AC9E63 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		5F64458327A6D58C00E4410C /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		5F64458527A7873300E4410C /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
 		5F72CCFC27AA71680063EB14 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
@@ -170,6 +172,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F2680CE27ABD0A500AC9E63 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5F2680CF27ABD0B400AC9E63 /* FeedViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		5F72CCFB27AA715F0063EB14 /* Composer */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				5F72CCFB27AA715F0063EB14 /* Composer */,
+				5F2680CE27ABD0A500AC9E63 /* Models */,
 				5F81980C27AA4681006D920D /* Controllers */,
 				5F81980B27AA4679006D920D /* Views */,
 			);
@@ -618,6 +629,7 @@
 				5F64458427A6D58C00E4410C /* FeedViewController.swift in Sources */,
 				5F64458627A7873300E4410C /* FeedImageCell.swift in Sources */,
 				5F81981127AA6926006D920D /* FeedImageCellController.swift in Sources */,
+				5F2680D027ABD0B400AC9E63 /* FeedViewModel.swift in Sources */,
 				5F72CCFD27AA71680063EB14 /* FeedUIComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
