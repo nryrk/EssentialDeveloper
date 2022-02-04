@@ -23,7 +23,7 @@ final class FeedImageCellController {
     public func preload() {
         viewModel.loadImageData()
     }
- 
+
     func cancelLoad() {
         viewModel.cancelImageDataLoad()
     }
