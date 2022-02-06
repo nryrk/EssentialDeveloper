@@ -12,6 +12,13 @@ import EssentialFeediOS
 
 class FeedViewControllerTests: XCTestCase {
 
+    func test_feedView_hastitle() {
+        let (sut, _) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        XCTAssertEqual(sut.title, "My Feed")
+    }
+
     func test_init_doesNotLoadFeed() {
         let (_, loader) = makeSUT()
 
@@ -351,12 +358,15 @@ private extension FeedViewController {
         return feedImageView(at: index) as? FeedImageCell
     }
 
-    func simulateFeedImageViewNotVisible(at row: Int) {
+    @discardableResult
+    func simulateFeedImageViewNotVisible(at row: Int) -> FeedImageCell? {
         let view = simulateFeedImageViewVisible(at: row)
 
         let delegate = tableView.delegate
         let index = IndexPath(row: row, section: feedImagesSection)
         delegate?.tableView?(tableView, didEndDisplaying: view!, forRowAt: index)
+
+        return view
     }
 
     func simulateFeedImageViewNearVisible(at row: Int) {
