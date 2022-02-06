@@ -49,6 +49,7 @@
 		5F81981127AA6926006D920D /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81981027AA6926006D920D /* FeedImageCellController.swift */; };
 		5F99578A27A6C9F000BB7891 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F99578727A6C9E300BB7891 /* EssentialFeed.framework */; platformFilter = ios; };
 		5F99578B27A6C9F000BB7891 /* EssentialFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F99578727A6C9E300BB7891 /* EssentialFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5FA60BC827AFB956009AA236 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5FA60BC727AFB956009AA236 /* Feed.strings */; };
 		5FF78BED27A79A8700E5C13E /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF78BEC27A79A8700E5C13E /* UIView+Shimmering.swift */; };
 		5FFD3EA827ACCDE700ADCA80 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFD3EA727ACCDE700ADCA80 /* FeedPresenter.swift */; };
 /* End PBXBuildFile section */
@@ -131,6 +132,7 @@
 		5F99578727A6C9E300BB7891 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F99578827A6C9E300BB7891 /* EssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F99578927A6C9E300BB7891 /* EssentialFeedIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FA60BC727AFB956009AA236 /* Feed.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Feed.strings; sourceTree = "<group>"; };
 		5FF78BEC27A79A8700E5C13E /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		5FFD3EA727ACCDE700ADCA80 /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -379,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				5FFD3EA727ACCDE700ADCA80 /* FeedPresenter.swift */,
+				5FA60BC727AFB956009AA236 /* Feed.strings */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FA60BC827AFB956009AA236 /* Feed.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
