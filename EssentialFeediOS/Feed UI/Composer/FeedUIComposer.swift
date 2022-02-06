@@ -14,13 +14,14 @@ public final class FeedUIComposer {
     private init() {}
 
     public static func feedComposedWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
-        let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: MainQueueDispatchDecorator(decoretee: feedLoader))
+        let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: MainQueueDispatchDecorator(decoratee: feedLoader))
         let refreshController = FeedRefreshViewController(delegate: presentationAdapter)
         let feedController = FeedViewController(refreshController: refreshController)
         feedController.title = FeedPresenter.title
 
         presentationAdapter.presenter = FeedPresenter(
-            feedView: FeedViewAdapter(controller: feedController, imageLoader: imageLoader),
+            feedView: FeedViewAdapter(controller: feedController,
+                                      imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
             loadingView: WeakRefVirtualProxy(refreshController))
 
         return feedController
@@ -36,10 +37,10 @@ public final class FeedUIComposer {
 }
 
 private final class MainQueueDispatchDecorator<T> {
-    let decoretee: T
+    let decoratee: T
 
-    init(decoretee: T) {
-        self.decoretee = decoretee
+    init(decoratee : T) {
+        self.decoratee = decoratee
     }
 
     func dispatch(completion: @escaping () -> Void) {
@@ -53,12 +54,19 @@ private final class MainQueueDispatchDecorator<T> {
 
 extension MainQueueDispatchDecorator: FeedLoader where T == FeedLoader {
     func load(completion: @escaping (FeedLoader.Result) -> Void) {
-        decoretee.load { [weak self]  result in
+        decoratee.load { [weak self]  result in
             self?.dispatch { completion(result) }
         }
     }
-
 }
+
+extension MainQueueDispatchDecorator: FeedImageDataLoader where T == FeedImageDataLoader {
+     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
+         return decoratee.loadImageData(from: url) { [weak self] result in
+             self?.dispatch { completion(result) }
+         }
+     }
+ }
 
 private final class WeakRefVirtualProxy<T: AnyObject> {
     private weak var object: T?
