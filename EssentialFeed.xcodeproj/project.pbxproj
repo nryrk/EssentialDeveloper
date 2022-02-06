@@ -130,8 +130,8 @@
 		5F81980E27AA50FE006D920D /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
 		5F81981027AA6926006D920D /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
 		5F99578727A6C9E300BB7891 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F99578827A6C9E300BB7891 /* EssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F99578927A6C9E300BB7891 /* EssentialFeedIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F99578827A6C9E300BB7891 /* EssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = EssentialFeedTests.xctest; path = /Users/oyoeruek/Desktop/EssentialDeveloper/build/Debug/EssentialFeedTests.xctest; sourceTree = "<absolute>"; };
+		5F99578927A6C9E300BB7891 /* EssentialFeedIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = EssentialFeedIntegrationTests.xctest; path = "/Users/oyoeruek/Desktop/EssentialDeveloper/build/Debug-iphoneos/EssentialFeedIntegrationTests.xctest"; sourceTree = "<absolute>"; };
 		5FA60BC727AFB956009AA236 /* Feed.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Feed.strings; sourceTree = "<group>"; };
 		5FF78BEC27A79A8700E5C13E /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		5FFD3EA727ACCDE700ADCA80 /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
@@ -207,8 +207,6 @@
 				5F779F9F27A6C8CD000C9A2C /* EssentialFeediOSTests */,
 				5F779FAB27A6C9BF000C9A2C /* Frameworks */,
 				5F99578727A6C9E300BB7891 /* EssentialFeed.framework */,
-				5F99578827A6C9E300BB7891 /* EssentialFeedTests.xctest */,
-				5F99578927A6C9E300BB7891 /* EssentialFeedIntegrationTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
