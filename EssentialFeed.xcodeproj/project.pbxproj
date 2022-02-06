@@ -133,6 +133,7 @@
 		5F99578827A6C9E300BB7891 /* EssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = EssentialFeedTests.xctest; path = /Users/oyoeruek/Desktop/EssentialDeveloper/build/Debug/EssentialFeedTests.xctest; sourceTree = "<absolute>"; };
 		5F99578927A6C9E300BB7891 /* EssentialFeedIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = EssentialFeedIntegrationTests.xctest; path = "/Users/oyoeruek/Desktop/EssentialDeveloper/build/Debug-iphoneos/EssentialFeedIntegrationTests.xctest"; sourceTree = "<absolute>"; };
 		5FCB6E4127AFBCF300872049 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
+		5FCB6E4327AFBD3D00872049 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Feed.strings; sourceTree = "<group>"; };
 		5FF78BEC27A79A8700E5C13E /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		5FFD3EA727ACCDE700ADCA80 /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -530,6 +531,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 5F779EF927A6C421000C9A2C;
 			productRefGroup = 5F779EF927A6C421000C9A2C;
@@ -687,6 +689,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5FCB6E4127AFBCF300872049 /* en */,
+				5FCB6E4327AFBD3D00872049 /* de */,
 			);
 			name = Feed.strings;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -763,6 +767,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
